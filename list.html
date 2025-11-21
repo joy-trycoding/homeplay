@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HomePlay 遊戲結果｜家中遊樂園</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background: #fff7f2;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col text-slate-800">
+    <!-- Header -->
+    <header class="w-full">
+      <div
+        class="max-w-5xl mx-auto px-4 py-3 md:py-4 flex items-center justify-between gap-3"
+      >
+        <!-- Logo & Title -->
+        <a href="index.html" class="flex items-center gap-2">
+          <div
+            class="w-9 h-9 md:w-10 md:h-10 rounded-2xl bg-gradient-to-tr from-orange-400 to-pink-400 flex items-center justify-center text-white text-xl md:text-2xl font-bold shadow-md"
+          >
+            🎪
+          </div>
+          <div class="flex flex-col leading-tight">
+            <span class="text-sm md:text-base font-semibold">
+              家中遊樂園 HomePlay
+            </span>
+            <span class="text-[10px] md:text-xs text-slate-500">
+              在客廳就能玩的親子小遊戲
+            </span>
+          </div>
+        </a>
+
+        <!-- Right: CTA / Profile -->
+        <div class="flex items-center gap-2 md:gap-3">
+          <button
+            type="button"
+            class="hidden md:inline-flex items-center gap-1 text-xs md:text-sm text-slate-600 hover:text-orange-600"
+            onclick="alert('之後可以連到教養資源或品牌介紹頁')"
+          >
+            <span class="text-lg">📒</span>
+            使用指南
+          </button>
+          <button
+            type="button"
+            class="inline-flex items-center gap-1 text-xs md:text-sm px-3 py-1.5 rounded-full bg-white/80 border border-orange-200 text-orange-600 hover:bg-orange-50 shadow-sm"
+            onclick="alert('之後可串接 Google / LINE 登入')"
+          >
+            <span class="text-lg">⭐</span>
+            會員收藏
+          </button>
+        </div>
+      </div>
+
+      <!-- Sub nav / step indicator -->
+      <div class="border-t border-orange-100 bg-white/80">
+        <div
+          class="max-w-5xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-2 text-xs md:text-sm text-slate-500"
+        >
+          <div class="flex items-center gap-2">
+            <span>步驟 3 / 總覽適合的遊戲</span>
+            <span class="hidden md:inline text-[10px] md:text-xs text-slate-400"
+              >可依年齡、興趣與時間排序</span
+            >
+          </div>
+          <a
+            href="filter.html"
+            class="inline-flex items-center gap-1 text-orange-500 hover:text-orange-600"
+          >
+            <span class="text-xs">←</span>
+            返回修改條件
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="flex-1 w-full">
+      <section class="max-w-5xl mx-auto px-4 py-4 md:py-6">
+        <!-- Summary bar -->
+        <div
+          class="mb-3 md:mb-4 rounded-2xl bg-white/90 border border-orange-100 px-3 py-3 md:px-4 md:py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-3"
+        >
+          <!-- 篩選條件摘要 -->
+          <div class="flex flex-wrap items-center gap-2 text-xs md:text-sm">
+            <span class="text-slate-500">目前條件：</span>
+            <span
+              class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-orange-50 text-orange-700 font-medium"
+            >
+              <span class="text-base">🎂</span>
+              <span>年齡：<span id="filter-age-text">全部年齡</span></span>
+            </span>
+            <span
+              class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sky-50 text-sky-700"
+            >
+              <span class="text-base">🎨</span>
+              <span>興趣：<span id="filter-interests-text">全部興趣</span></span>
+            </span>
+            <span
+              class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700"
+            >
+              <span class="text-base">💰</span>
+              <span>預算：<span id="filter-budget-text">0–300 元</span></span>
+            </span>
+          </div>
+
+          <!-- 顯示總數 ＋ 快速按鈕 -->
+          <div class="flex flex-wrap items-center gap-2 md:gap-3">
+            <div class="text-[11px] md:text-xs text-slate-400">
+              共找到
+              <span
+                id="result-count"
+                class="font-semibold text-orange-500"
+                >0</span
+              >
+              個適合的遊戲
+            </div>
+            <button
+              type="button"
+              class="inline-flex items-center gap-1 text-[11px] md:text-xs px-2.5 py-1 rounded-full border border-slate-200 bg-white hover:border-orange-300 hover:text-orange-600"
+              onclick="alert('之後會依條件重新篩選')"
+            >
+              重新篩選
+            </button>
+          </div>
+        </div>
+
+        <!-- 排序 & 快速 Chip -->
+        <div
+          class="mb-3 md:mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2"
+        >
+          <!-- 排序 -->
+          <div class="flex items-center gap-2 text-xs md:text-sm">
+            <span class="text-slate-500">排序方式：</span>
+            <select
+              id="sort-select"
+              class="text-xs md:text-sm rounded-full border border-slate-200 bg-white px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            >
+              <option value="popular">最熱門（愛心最多）</option>
+              <option value="prep">準備時間最少</option>
+              <option value="play">遊玩時間最短</option>
+              <option value="cost">成本最低</option>
+            </select>
+          </div>
+
+          <!-- 快速 Chip -->
+          <div class="flex flex-wrap gap-2 text-xs md:text-sm">
+            <button
+              type="button"
+              class="px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition"
+              onclick="alert('之後可套用「需要大人較少協助」篩選條件')"
+            >
+              🙌 大人輕鬆陪玩
+            </button>
+            <button
+              type="button"
+              class="px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-600 hover:bg-emerald-50 hover:border-emerald-200 transition"
+              onclick="alert('之後會依準備時間重新篩選')"
+            >
+              ⏱ 10 分鐘內
+            </button>
+            <button
+              type="button"
+              class="px-3 py-1.5 rounded-full bg-white border border-pink-200 text-slate-600 hover:bg-pink-50 hover:border-pink-200 transition"
+              onclick="alert('之後會依條件重新篩選')"
+            >
+              ❤️ 人氣 Top 10
+            </button>
+          </div>
+        </div>
+
+        <!-- 遊戲列表（交給 JS 塞內容） -->
+        <div id="game-list" class="space-y-3 md:space-y-4">
+          <!-- JS 會自動插入內容，這裡保持空白 -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-orange-100 bg-white/80">
+      <div
+        class="max-w-5xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs md:text-sm text-slate-500"
+      >
+        <div>© 家中遊樂園 HomePlay</div>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-orange-500">關於我們</a>
+          <a href="#" class="hover:text-orange-500">隱私權政策</a>
+          <a href="#" class="hover:text-orange-500">使用條款</a>
+        </div>
+      </div>
+    </footer>
+    <script src="games.js"></script>
+    <script src="list.js"></script>
+  </body>
+</html>
+

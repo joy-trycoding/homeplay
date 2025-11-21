@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>家中遊樂園 HomePlay</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Tailwind CDN：開發階段最方便，之後可改成編譯版 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background: #fff7f2;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col text-slate-800">
+    <!-- 頂部 Nav -->
+    <header class="w-full">
+      <div
+        class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+          <div
+            class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-orange-400 to-pink-400 flex items-center justify-center shadow-md"
+          >
+            <!-- 小房子圖形 -->
+            <div class="w-6 h-6 bg-white rounded-xl relative">
+              <div
+                class="absolute -top-2 left-1/2 -translate-x-1/2 border-l-8 border-r-8 border-b-[10px] border-l-transparent border-r-transparent border-b-orange-300"
+              ></div>
+            </div>
+          </div>
+          <div class="flex flex-col leading-tight">
+            <span class="font-bold text-lg md:text-xl">家中遊樂園</span>
+            <span class="text-xs md:text-sm text-slate-500">HomePlay</span>
+          </div>
+        </div>
+
+        <!-- 登入按鈕 -->
+        <button
+          class="flex items-center gap-2 px-3 py-2 rounded-full bg-white shadow-sm border border-orange-200 text-xs md:text-sm hover:bg-orange-50 transition"
+          onclick="alert('之後會跳出登入 Modal（Google / LINE）')"
+        >
+          <span class="inline-block w-6 h-6 rounded-full bg-orange-200"></span>
+          <span>登入 / 註冊</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- 主內容 -->
+    <main class="flex-1">
+      <section class="max-w-5xl mx-auto px-4 pt-4 pb-10">
+        <!-- Hero 區 -->
+        <div
+          class="grid md:grid-cols-2 gap-8 items-center bg-gradient-to-tr from-orange-100 via-pink-50 to-sky-100 rounded-3xl p-6 md:p-10 shadow-sm"
+        >
+          <!-- 文案區 -->
+          <div class="space-y-4">
+            <h1 class="text-2xl md:text-4xl font-extrabold leading-snug">
+              在家也能變身
+              <span class="text-orange-500">遊樂園</span> 🎈
+            </h1>
+            <p class="text-sm md:text-base text-slate-600">
+              依照孩子年齡、性別與興趣，自動推薦
+              <span class="font-semibold">300 元內就能完成</span> 的在家 DIY
+              遊戲：繪畫、科學實驗、親子料理、桌遊、運動、語言訓練通通有。
+            </p>
+
+            <!-- CTA 按鈕 -->
+            <div class="flex flex-wrap gap-3 pt-2">
+              <a
+                href="filter.html"
+                class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-orange-500 text-white text-sm md:text-base font-semibold shadow-md hover:bg-orange-600 transition"
+              >
+                開始找遊戲
+                <span class="ml-1 text-lg">➜</span>
+              </a>
+              <button
+              id="random-game-btn"
+              type="button"
+              class="inline-flex items-center justify-center px-5 py-3 rounded-full border border-orange-300 bg-white/70 text-sm md:text-base text-orange-600 font-medium hover:bg-orange-50 transition"
+            >
+              🎲 隨機來個驚喜
+            </button>
+            </div>
+
+            <!-- 小賣點 -->
+            <div class="flex flex-wrap gap-2 pt-3 text-xs md:text-sm">
+              <span
+                class="px-3 py-1 rounded-full bg-white/80 text-orange-600 font-medium shadow-sm"
+                >減少 3C、增加高品質陪伴</span
+              >
+              <span
+                class="px-3 py-1 rounded-full bg-white/80 text-sky-600 font-medium shadow-sm"
+                >按年齡精選 2～12 歲遊戲</span
+              >
+              <span
+                class="px-3 py-1 rounded-full bg-white/80 text-pink-600 font-medium shadow-sm"
+                >材料多半家裡就有</span
+              >
+            </div>
+          </div>
+
+          <!-- 插畫風格區（之後可換成真正插畫） -->
+          <div class="relative h-56 md:h-72">
+            <div
+              class="absolute inset-0 rounded-3xl bg-white/80 shadow-lg flex items-center justify-center overflow-hidden"
+            >
+              <!-- 模擬客廳場景 -->
+              <div
+                class="w-full h-full flex flex-col items-center justify-center gap-4"
+              >
+                <div class="flex gap-4 items-end">
+                  <div
+                    class="w-20 h-20 rounded-2xl bg-sky-100 flex items-center justify-center text-3xl"
+                  >
+                    🎨
+                  </div>
+                  <div
+                    class="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center text-2xl"
+                  >
+                    🔬
+                  </div>
+                  <div
+                    class="w-20 h-24 rounded-2xl bg-emerald-100 flex items-center justify-center text-3xl"
+                  >
+                    🧱
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 text-sm md:text-base text-slate-600">
+                  <span class="text-xl md:text-2xl">👩‍👧</span>
+                  <span>「今天要玩哪一個呢？」</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 漂浮裝飾 -->
+            <div
+              class="absolute -top-3 -left-2 w-10 h-10 rounded-full bg-pink-300/70 flex items-center justify-center text-white text-xl shadow-md"
+            >
+              ⭐
+            </div>
+            <div
+              class="absolute -bottom-3 -right-3 w-12 h-12 rounded-3xl bg-orange-300/70 flex items-center justify-center text-white text-2xl shadow-md"
+            >
+              🧸
+            </div>
+            <div
+              class="absolute -top-4 right-8 w-8 h-8 rounded-full bg-sky-300/70 shadow-md"
+            ></div>
+          </div>
+        </div>
+
+        <!-- 快速選齡區 -->
+        <section class="mt-10">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="font-bold text-lg md:text-xl">
+              先選年齡，幫你對準適合的遊戲 🎯
+            </h2>
+            <span class="text-xs md:text-sm text-slate-500"
+              >點一下就會帶你到條件篩選頁</span
+            >
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <!-- 年齡卡片：字級放大 -->
+            <a
+              href="filter.html"
+              class="group rounded-2xl bg-white shadow-sm border border-orange-100 px-4 py-3 flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition"
+            >
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-base md:text-lg font-semibold text-slate-700"
+                  >2–3 歲</span
+                >
+                <span class="text-2xl md:text-3xl">🍼</span>
+              </div>
+              <p class="text-sm text-slate-500">
+                顏色認知、簡單感統、親子互動遊戲
+              </p>
+              <div
+                class="mt-3 text-right text-[11px] md:text-xs text-orange-500"
+              >
+                點我開始 ➜
+              </div>
+            </a>
+
+            <a
+              href="filter.html"
+              class="group rounded-2xl bg-white shadow-sm border border-orange-100 px-4 py-3 flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition"
+            >
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-base md:text-lg font-semibold text-slate-700"
+                  >3–4 歲</span
+                >
+                <span class="text-2xl md:text-3xl">🎈</span>
+              </div>
+              <p class="text-sm text-slate-500">
+                簡單規則、語言表達、角色扮演
+              </p>
+              <div
+                class="mt-3 text-right text-[11px] md:text-xs text-orange-500"
+              >
+                點我開始 ➜
+              </div>
+            </a>
+
+            <a
+              href="filter.html"
+              class="group rounded-2xl bg-white shadow-sm border border-orange-100 px-4 py-3 flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition"
+            >
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-base md:text-lg font-semibold text-slate-700"
+                  >5–6 歲</span
+                >
+                <span class="text-2xl md:text-3xl">🧩</span>
+              </div>
+              <p class="text-sm text-slate-500">
+                初階桌遊、故事創作、數概念遊戲
+              </p>
+              <div
+                class="mt-3 text-right text-[11px] md:text-xs text-orange-500"
+              >
+                點我開始 ➜
+              </div>
+            </a>
+
+            <a
+              href="filter.html"
+              class="group rounded-2xl bg-white shadow-sm border border-orange-100 px-4 py-3 flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition"
+            >
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-base md:text-lg font-semibold text-slate-700"
+                  >7–8 歲</span
+                >
+                <span class="text-2xl md:text-3xl">🚀</span>
+              </div>
+              <p class="text-sm text-slate-500">
+                入門科學實驗、小專題創意挑戰
+              </p>
+              <div
+                class="mt-3 text-right text-[11px] md:text-xs text-orange-500"
+              >
+                點我開始 ➜
+              </div>
+            </a>
+
+            <a
+              href="filter.html"
+              class="group rounded-2xl bg-white shadow-sm border border-orange-100 px-4 py-3 flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition"
+            >
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-base md:text-lg font-semibold text-slate-700"
+                  >9–10 歲</span
+                >
+                <span class="text-2xl md:text-3xl">🧠</span>
+              </div>
+              <p class="text-sm text-slate-500">
+                策略遊戲、簡易模型、團隊合作任務
+              </p>
+              <div
+                class="mt-3 text-right text-[11px] md:text-xs text-orange-500"
+              >
+                點我開始 ➜
+              </div>
+            </a>
+
+            <a
+              href="filter.html"
+              class="group rounded-2xl bg-white shadow-sm border border-orange-100 px-4 py-3 flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition"
+            >
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-base md:text-lg font-semibold text-slate-700"
+                  >11–12 歲</span
+                >
+                <span class="text-2xl md:text-3xl">📚</span>
+              </div>
+              <p class="text-sm text-slate-500">
+                專案型挑戰、研究小任務、思考訓練
+              </p>
+              <div
+                class="mt-3 text-right text-[11px] md:text-xs text-orange-500"
+              >
+                點我開始 ➜
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- 今日推薦區（改成實際從 GAMES 抽卡） -->
+        <section class="mt-10">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
+            <div>
+              <h2 class="font-bold text-lg md:text-xl">今日靈感推薦 ✨</h2>
+              <p class="text-xs md:text-sm text-slate-500 mt-1">
+                從所有遊戲中隨機挑出 3 個靈感，點卡片就能直接開始玩。
+              </p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button
+              id="random-game-btn"
+              type="button"
+              class="px-3 py-1.5 rounded-full border border-slate-200 bg-white text-xs md:text-sm text-slate-600 hover:border-orange-300 hover:text-orange-600 hover:shadow-sm transition"
+            >
+              🎲 隨機玩一個
+            </button>
+              <button
+                id="shuffle-today-btn"
+                type="button"
+                class="px-3 py-1.5 rounded-full bg-orange-100 text-xs md:text-sm text-orange-700 font-medium hover:bg-orange-200 transition"
+              >
+                換一批
+              </button>
+            </div>
+          </div>
+
+          <div id="today-cards" class="grid md:grid-cols-3 gap-4">
+            <!-- 由 index.js 動態塞入推薦卡片 -->
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-6 border-t border-orange-100 bg-white/80">
+      <div
+        class="max-w-5xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs md:text-sm text-slate-500"
+      >
+        <div>© 家中遊樂園 HomePlay</div>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-orange-500">關於我們</a>
+          <a href="#" class="hover:text-orange-500">隱私權政策</a>
+          <a href="#" class="hover:text-orange-500">使用條款</a>
+        </div>
+      </div>
+    </footer>
+    <script src="games.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

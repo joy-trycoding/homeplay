@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>遊戲詳細說明｜家中遊樂園 HomePlay</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background: #fff7f2;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col text-slate-800">
+    <!-- Header -->
+    <header class="w-full">
+      <div
+        class="max-w-5xl mx-auto px-4 py-3 md:py-4 flex items-center justify-between gap-3"
+      >
+        <!-- Logo & Title -->
+        <a href="index.html" class="flex items-center gap-2">
+          <div
+            class="w-9 h-9 md:w-10 md:h-10 rounded-2xl bg-gradient-to-tr from-orange-400 to-pink-400 flex items-center justify-center text-white text-xl md:text-2xl font-bold shadow-md"
+          >
+            🎪
+          </div>
+          <div class="flex flex-col leading-tight">
+            <span class="text-sm md:text-base font-semibold">
+              家中遊樂園 HomePlay
+            </span>
+            <span class="text-[10px] md:text-xs text-slate-500">
+              在客廳就能玩的親子小遊戲
+            </span>
+          </div>
+        </a>
+
+        <!-- Right: CTA / Profile -->
+        <div class="flex items-center gap-2 md:gap-3">
+          <button
+            type="button"
+            class="hidden md:inline-flex items-center gap-1 text-xs md:text-sm text-slate-600 hover:text-orange-600"
+            onclick="history.back()"
+          >
+            <span class="text-lg">←</span>
+            返回上一頁
+          </button>
+          <button
+            type="button"
+            class="inline-flex items-center gap-1 text-xs md:text-sm px-3 py-1.5 rounded-full bg-white/80 border border-orange-200 text-orange-600 hover:bg-orange-50 shadow-sm"
+            onclick="alert('之後可串接 Google / LINE 登入，查看收藏紀錄')"
+          >
+            <span class="text-lg">⭐</span>
+            我的收藏
+          </button>
+        </div>
+      </div>
+
+      <!-- Sub nav / breadcrumb -->
+      <div class="border-t border-orange-100 bg-white/80">
+        <div
+          class="max-w-5xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-2 text-xs md:text-sm text-slate-500"
+        >
+          <div class="flex items-center gap-1 md:gap-2">
+            <a href="index.html" class="hover:text-orange-500">首頁</a>
+            <span class="text-[10px]">›</span>
+            <a href="filter.html" class="hover:text-orange-500">選擇條件</a>
+            <span class="text-[10px]">›</span>
+            <a href="list.html" class="hover:text-orange-500">遊戲列表</a>
+            <span class="text-[10px]">›</span>
+            <span class="text-orange-500">遊戲詳情</span>
+          </div>
+          <div class="hidden md:block text-[11px] text-slate-400">
+            每一個遊戲都可以先看步驟，再決定要不要玩
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="flex-1 w-full">
+      <section class="max-w-5xl mx-auto px-4 py-4 md:py-6">
+        <!-- 載入中 / 錯誤訊息 -->
+        <div
+          id="detail-status"
+          class="mb-3 md:mb-4 text-xs md:text-sm text-slate-500"
+        >
+          正在載入遊戲內容…
+        </div>
+
+        <!-- 主要內容容器：交給 detail.js 填 -->
+        <div id="game-detail" class="space-y-4 md:space-y-6"></div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-orange-100 bg-white/80">
+      <div
+        class="max-w-5xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs md:text-sm text-slate-500"
+      >
+        <div>© 家中遊樂園 HomePlay</div>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-orange-500">關於我們</a>
+          <a href="#" class="hover:text-orange-500">隱私權政策</a>
+          <a href="#" class="hover:text-orange-500">使用條款</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 資料 & 詳細頁邏輯 -->
+    <script src="games.js"></script>
+    <script src="detail.js"></script>
+  </body>
+</html>

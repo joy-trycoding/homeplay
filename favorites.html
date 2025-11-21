@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>我的收藏｜家中遊樂園 HomePlay</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Tailwind CDN：開發用 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background: #fff7f2;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col text-slate-800">
+    <!-- 頂部 Nav（簡版） -->
+    <header class="w-full bg-white/80 backdrop-blur border-b border-orange-100">
+      <div
+        class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between"
+      >
+        <a href="index.html" class="flex items-center gap-2">
+          <div
+            class="w-9 h-9 rounded-2xl bg-gradient-to-tr from-orange-400 to-pink-400 flex items-center justify-center shadow-md"
+          >
+            <div class="w-5 h-5 bg-white rounded-xl relative">
+              <div
+                class="absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[9px] border-r-[9px] border-b-[10px] border-l-transparent border-r-transparent border-b-orange-300"
+              ></div>
+            </div>
+          </div>
+          <div class="flex flex-col leading-tight">
+            <span class="font-bold text-sm md:text-base">家中遊樂園</span>
+            <span class="text-[11px] md:text-xs text-slate-500">HomePlay</span>
+          </div>
+        </a>
+
+        <nav class="flex items-center gap-2 text-xs md:text-sm">
+          <a
+            href="index.html"
+            class="px-3 py-1 rounded-full bg-white border border-slate-200 hover:bg-slate-50"
+            >回首頁</a
+          >
+          <a
+            href="list.html"
+            class="px-3 py-1 rounded-full bg-white border border-slate-200 hover:bg-slate-50"
+            >全部遊戲</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- 主內容 -->
+    <main class="flex-1">
+      <section class="max-w-5xl mx-auto px-4 pt-6 pb-10">
+        <div class="flex items-center justify-between gap-3 mb-4">
+          <div>
+            <h1 class="text-xl md:text-2xl font-bold text-slate-900">
+              我的收藏遊戲
+            </h1>
+            <p class="text-xs md:text-sm text-slate-500 mt-1">
+              這裡會顯示你曾經按下「加入收藏」的遊戲（目前先存放在這台裝置的瀏覽器中）。
+            </p>
+          </div>
+          <button
+            id="clear-favorites-btn"
+            type="button"
+            class="hidden px-3 py-1.5 rounded-full border border-slate-200 text-[11px] md:text-xs text-slate-500 hover:bg-slate-50"
+          >
+            清除全部收藏
+          </button>
+        </div>
+
+        <!-- 收藏列表容器 -->
+        <div id="favorites-empty" class="hidden">
+          <div
+            class="mt-10 bg-white/80 border border-dashed border-orange-200 rounded-2xl p-6 text-center text-slate-500"
+          >
+            <div class="text-4xl mb-2">🧺</div>
+            <p class="mb-2 text-sm md:text-base">
+              目前還沒有收藏任何遊戲。
+            </p>
+            <p class="text-xs md:text-sm text-slate-400 mb-4">
+              建議可以先到列表或詳細頁，找到喜歡的遊戲按下「加入收藏」，再回來看看。
+            </p>
+            <div class="flex justify-center gap-2">
+              <a
+                href="list.html"
+                class="px-4 py-2 rounded-full bg-orange-500 text-white text-sm md:text-base font-medium hover:bg-orange-600"
+                >去逛逛全部遊戲</a
+              >
+              <a
+                href="index.html"
+                class="px-4 py-2 rounded-full bg-white text-orange-500 border border-orange-200 text-sm md:text-base hover:bg-orange-50"
+                >回到首頁</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="favorites-list"
+          class="grid md:grid-cols-2 gap-4 mt-4"
+        >
+          <!-- 由 favorites.js 動態塞入卡片 -->
+        </div>
+      </section>
+    </main>
+
+    <!-- 底部 -->
+    <footer class="border-t border-orange-100 bg-white/70">
+      <div
+        class="max-w-5xl mx-auto px-4 py-3 text-[11px] md:text-xs text-slate-400 flex items-center justify-between"
+      >
+        <span>家中遊樂園 HomePlay（示範版）</span>
+        <span>收藏目前儲存在本機瀏覽器中</span>
+      </div>
+    </footer>
+
+    <!-- 載入遊戲資料與收藏邏輯 -->
+    <script src="games.js"></script>
+    <script src="favorites.js"></script>
+  </body>
+</html>
