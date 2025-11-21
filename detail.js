@@ -527,6 +527,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1200);
       }
     }
+    document.getElementById("favorite-button")?.addEventListener("click", () => {
+        gtag("event", "add_to_favorite", {
+          game_id: currentGame.id,
+          game_title: currentGame.title,
+          age_bucket: currentGame.age_bucket
+        });
+      });
+      
   });
   
   
